@@ -39,7 +39,7 @@ void setup() {
 
   // Setting to  a color
   for (int pixel = startPixel; pixel < endPixel; pixel++) {
-    else strip.SetPixelColor(pixel, color);
+     strip.SetPixelColor(pixel, color);
   }
   strip.Show();
 }
