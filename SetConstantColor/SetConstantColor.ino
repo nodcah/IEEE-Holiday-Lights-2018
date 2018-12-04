@@ -29,8 +29,10 @@ NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(PixelCount, PixelPin);
 void setup() {
   Serial.begin(115200);
 
-  Serial.print("Initializing strip with color ");
-  Serial.println(color);
+  Serial.print("Initializing strip from ");
+  Serial.print(startPixel);
+  Serial.print(" to ");
+  Serial.println(endPixel);
   Serial.flush();  // Wait for transmission to finish
 
   strip.Begin();
