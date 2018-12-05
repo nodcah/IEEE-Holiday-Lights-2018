@@ -13,12 +13,12 @@
           ^                       ^                    ^
      startPixel               endPixel             PixelCount
 */
-const int PixelCount = 150;  // Number of pixels on a strip (default is 150)
+const int PixelCount = 450;  // Number of pixels on a strip (default is 150)
 const int PixelPin = 2;      // Pin that the LEDS are connected to on Arduino
 const int startPixel = 0;    // Pixel number on which to start control (inclusive)
-const int endPixel = 150;    // Pixel number on which to end control (exclusive)
+const int endPixel = 450;    // Pixel number on which to end control (exclusive)
 
-RgbColor color = RgbColor(100, 0, 0); // (r,g,b), Color to set strip to
+RgbColor color = RgbColor(5, 100, 100); // (r,g,b), Color to set strip to
 //HslColor color = HslColor(0.0f,1.0f,.196f);  // (hue,saturation,value), Color to set strip to
 
 

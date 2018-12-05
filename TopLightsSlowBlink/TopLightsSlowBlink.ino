@@ -15,10 +15,10 @@
           ^                       ^                    ^
      startPixel               endPixel             PixelCount
 */
-const int PixelCount = 150;  // Number of pixels on a strip (default is 150)
+const int PixelCount = 200;  // Number of pixels on a strip (default is 150)
 const int PixelPin = 2;      // Pin that the LEDS are connected to on Arduino
 const int startPixel = 0;    // Pixel number on which to start control (inclusive)
-const int endPixel = 150;    // Pixel number on which to end control (exclusive)
+const int endPixel = 200;    // Pixel number on which to end control (exclusive)
 
 
 //=============================//
@@ -28,7 +28,7 @@ RgbColor red = RgbColor(100, 0, 0); // (r,g,b)
 RgbColor green = RgbColor(0, 100, 0); // (r,g,b)
 RgbColor blue = RgbColor(0, 0, 50); // (r,g,b)
 RgbColor white = RgbColor(200, 200, 200); // (r,g,b)
-RgbColor startColor = blue;
+RgbColor startColor = green;
 RgbColor blinkColor = white;
 
 NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(PixelCount, PixelPin);
@@ -36,7 +36,7 @@ NeoPixelBus<NeoGrbFeature, Neo800KbpsMethod> strip(PixelCount, PixelPin);
 
 // Animation Code
 NeoPixelAnimator animations(PixelCount); // NeoPixel animation management object
-uint16_t changePixels[(endPixel - startPixel) / 20]; // pixels to change back after
+uint16_t changePixels[(endPixel - startPixel) / 10]; // pixels to change back after
 const uint16_t NOPIXEL = 1000;  // Indicates there isn't a pixel
 
 // simple blend function
@@ -70,11 +70,11 @@ void PickRandom() {
     animations.StartAnimation(changePixels[pixelToChange], time, BlendAnimUpdateChange);
     pixelToChange++;
   }
-  for(int i=0; i<((endPixel - startPixel) / 20); i++){
+  for(int i=0; i<((endPixel - startPixel) / 10); i++){
     changePixels[i] = NOPIXEL;
   }
   // pick random count of pixels to animate
-  uint16_t count = random((endPixel - startPixel) / 20);
+  uint16_t count = random((endPixel - startPixel) / 10);
   int changeCount=0;  // Keeps track of adding pixels to change array
   while (count > 0) {
     // pick a random pixel
@@ -101,7 +101,7 @@ void setup() {
   // Start as blue
   strip.Begin();
   for (int pixel = startPixel; pixel < endPixel; pixel++) {
-    strip.SetPixelColor(pixel, blue);
+    strip.SetPixelColor(pixel, startColor);
   }
   strip.Show();
 }
